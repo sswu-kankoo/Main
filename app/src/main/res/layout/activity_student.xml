@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내 간쿠 보기"
+        android:onClick="Custom_onClick"/>
+
+    <Button
+        android:id="@+id/maechul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="간쿠 교환?"
+        android:onClick="Maechul_onClick"/>
+
+    <Button
+        android:id="@+id/goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="간쿠 생성(관리자)"
+        android:onClick="Goods_onClick"/>
+
+</LinearLayout>
