@@ -15,19 +15,19 @@ public class StudentActivity extends MainActivity{
     }
 
     public void Custom_onClick(View v){
-        intent.putExtra("result", "고객 관리 클릭함");
+        intent.putExtra("result", "내 간쿠 보기-> 서버 연결?");
         setResult(RESULT_OK, intent);
         finish();
     }
 
     public void Maechul_onClick(View v){
-        intent.putExtra("result", "고객 관리 클릭함");
+        intent.putExtra("result", "간쿠 교환?");
         setResult(RESULT_OK, intent);
         finish();
     }
 
     public void Goods_onClick(View v){
-        intent.putExtra("result", "고객 관리 클릭함");
+        intent.putExtra("result", "간쿠생성(관리자)");
         setResult(RESULT_OK, intent);
         finish();
     }

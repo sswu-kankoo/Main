@@ -6,18 +6,21 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/customer"
+        android:id="@+id/activity_qrscan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="QR코드 스캔"
-        android:onClick="Custom_onClick"/>
+        android:text="QR코드 스캔" />
 
+
+    <!--
     <Button
         android:id="@+id/maechul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="거래 목록"
         android:onClick="Maechul_onClick"/>
+        -->
+
 
 
 </LinearLayout>

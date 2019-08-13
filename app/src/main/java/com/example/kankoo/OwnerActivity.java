@@ -3,28 +3,43 @@ package com.example.kankoo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class OwnerActivity extends MainActivity{
-
-    Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_student);
+        this.setContentView(R.layout.activity_owner);
+        Toast.makeText(getApplicationContext(), "QR코드 스캔", Toast.LENGTH_SHORT).show();
+
+        Button qrscan = (Button) findViewById(R.id.activity_qrscan);
+        qrscan.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QRscanActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    public void Custom_onClick(View v){
-        intent.putExtra("result", "고객 관리 클릭함");
+    /*
+    public void QRscan_onClick(View v){
+        intent.putExtra("result", "QR코드 스캔");
         setResult(RESULT_OK, intent);
         finish();
     }
+
 
     public void Maechul_onClick(View v){
-        intent.putExtra("result", "고객 관리 클릭함");
+        intent.putExtra("result", "거래 목록");
         setResult(RESULT_OK, intent);
         finish();
     }
+
+    */
 
 
 }

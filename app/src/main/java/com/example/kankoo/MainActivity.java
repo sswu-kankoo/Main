@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,13 +12,22 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        Button button = (Button)findViewById(R.id.activity_student);
+
+        button.setOnClickListener(new button.OnClickListener(){
+            public void onClick(View v)
+        });
+        Toast.makeText(getApplicationContext(), "학생화면", Toast.LENGTH_SHORT).show();
+
+
     }
 
+
     public void login_onClick(View view){
-        Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
+        Intent intent = new Intent(getApplicationContext(), OwnerActivity.class);
         startActivityForResult(intent, 100);
     }
 
