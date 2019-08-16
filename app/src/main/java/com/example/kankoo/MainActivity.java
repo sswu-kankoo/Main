@@ -14,13 +14,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        Button button = (Button)findViewById(R.id.activity_student);
+        //button1(학생)
+        Button button1 = (Button)findViewById(R.id.activity_student);
+        button1.setOnClickListener(new View.OnClickListener(){
 
-        button.setOnClickListener(new button.OnClickListener(){
-            public void onClick(View v)
+            @Override
+            public void onClick (View view){
+                Intent Intent = new Intent(getApplicationContext(), StudentActivity.class);
+                startActivityForResult(Intent, 100);
+                Toast.makeText(getApplicationContext(), "학생 화면", Toast.LENGTH_SHORT).show();
+            }
         });
-        Toast.makeText(getApplicationContext(), "학생화면", Toast.LENGTH_SHORT).show();
+
+        //button2(사장님)
+        Button button2 = (Button)findViewById(R.id.activity_owner);
+        button2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick (View view){
+                Intent Intent = new Intent(getApplicationContext(), OwnerActivity.class);
+                startActivityForResult(Intent, 100);
+                Toast.makeText(getApplicationContext(), "사장님 화면", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
     }
