@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick (View view){
-                Intent Intent = new Intent(getApplicationContext(), StudentActivity.class);
+                Intent Intent = new Intent(getApplicationContext(), mainpage1.class);
                 startActivityForResult(Intent, 100);
                 Toast.makeText(getApplicationContext(), "학생 화면", Toast.LENGTH_SHORT).show();
             }
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick (View view){
-                Intent Intent = new Intent(getApplicationContext(), OwnerActivity.class);
+                Intent Intent = new Intent(getApplicationContext(), mainpage2.class);
                 startActivityForResult(Intent, 100);
                 Toast.makeText(getApplicationContext(), "사장님 화면", Toast.LENGTH_SHORT).show();
             }
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void login_onClick(View view){
-        Intent intent = new Intent(getApplicationContext(), OwnerActivity.class);
+        Intent intent = new Intent(getApplicationContext(), mainpage2.class);
         startActivityForResult(intent, 100);
     }
 

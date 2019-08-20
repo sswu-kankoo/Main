@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class OwnerActivity extends MainActivity{
+public class mainpage2 extends MainActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -14,7 +14,7 @@ public class OwnerActivity extends MainActivity{
         this.setContentView(R.layout.activity_owner);
         Toast.makeText(getApplicationContext(), "QR코드 스캔", Toast.LENGTH_SHORT).show();
 
-        Button qrscan = (Button) findViewById(R.id.activity_qrscan);
+        Button qrscan = (Button) findViewById(R.id.btnReadQR);
         qrscan.setOnClickListener(new View.OnClickListener(){
 
             @Override

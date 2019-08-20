@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/activity_qrscan"
+        android:id="@+id/btnReadQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="QR코드 스캔" />
@@ -14,7 +14,7 @@
 
     <!--
     <Button
-        android:id="@+id/maechul"
+        android:id="@+id/btnManageQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="거래 목록"

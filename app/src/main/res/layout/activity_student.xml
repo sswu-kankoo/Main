@@ -6,24 +6,24 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/customer"
+        android:id="@+id/btnViewQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="내 간쿠 보기"
-        android:onClick="Custom_onClick"/>
+        android:onClick="ViewQR_onClick"/>
 
     <Button
-        android:id="@+id/maechul"
+        android:id="@+id/btnExchangeQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="간쿠 교환?"
-        android:onClick="Maechul_onClick"/>
+        android:onClick="ExchangeQR_onClick"/>
 
     <Button
-        android:id="@+id/goods"
+        android:id="@+id/btnMakeQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="간쿠 생성(관리자)"
-        android:onClick="Goods_onClick"/>
+        android:onClick="MakeQR_onClick"/>
 
 </LinearLayout>
