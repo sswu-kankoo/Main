@@ -4,9 +4,8 @@ package com.example.kankoo;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +16,16 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+
 public class MakeQR extends AppCompatActivity {
 
-    private EditText etInput;
-    private ImageView imageView;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +35,33 @@ public class MakeQR extends AppCompatActivity {
         Intent Intent = getIntent();
         final String result = Intent.getStringExtra("result");
 
-        etInput = findViewById(R.id.etInput);
-        Button btnCreateQr = findViewById(R.id.btnCreate);
+
         imageView = findViewById(R.id.imageView);
 
-        btnCreateQr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //String text = etInput.getText().toString().trim();
-                String text = result;
+        //String text = etInput.getText().toString().trim();
+        String text = result;
 
 
-                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
-                try {
-                    BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 500, 500);
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                    imageView.setImageBitmap(bitmap);
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 500, 500);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            imageView.setImageBitmap(bitmap);
+
+
+
+
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
+
+
 }
+
+
