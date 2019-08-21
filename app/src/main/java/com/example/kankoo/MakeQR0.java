@@ -41,6 +41,10 @@ public class MakeQR0 extends AppCompatActivity {
         //암호화
         final String inputPassword = "merongmerong";
 
+        //반복문
+
+
+
 
 
         btnGenQR.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +65,7 @@ public class MakeQR0 extends AppCompatActivity {
                     String s3 = major.getText().toString();
                     String s4 = quantity.getText().toString();
                     String result = s1 + s2 + s3 + s4;
+                    String result_original = s1 + s2 + s3 + s4;
 
                     //암호화
                     try {
@@ -72,6 +77,7 @@ public class MakeQR0 extends AppCompatActivity {
                     Intent Intent = new Intent(getApplicationContext(), MakeQR.class);
 
                     Intent.putExtra("result", result);
+                    Intent.putExtra("result_original", result_original);
                     startActivityForResult(Intent, 100);
                     finish();
                 }
