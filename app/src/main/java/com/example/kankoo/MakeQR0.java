@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -41,10 +45,6 @@ public class MakeQR0 extends AppCompatActivity {
         //암호화
         final String inputPassword = "merongmerong";
 
-        //반복문
-
-
-
 
 
         btnGenQR.setOnClickListener(new View.OnClickListener() {
@@ -64,20 +64,38 @@ public class MakeQR0 extends AppCompatActivity {
                     String s2 = semester.getText().toString();
                     String s3 = major.getText().toString();
                     String s4 = quantity.getText().toString();
-                    String result = s1 + s2 + s3 + s4;
-                    String result_original = s1 + s2 + s3 + s4;
+
+                    int num = Integer.parseInt(s4);
+
+                    String result = s1 + s2 + s3;
+                    String result_original = s1 + s2 + s3 + s4; //나중에 바꿔야해 s4값
+
+                    // 배열 선언, 개수만큼 생성 (암호화 전, 암호화 후)
+                    int [] array1 = new int[num];
+                    String [] array2 = new String[num];
 
                     //암호화
                     try {
-                        result = encrypt(Editable.Factory.getInstance().newEditable(result), inputPassword);
+                        // 반복문 이용
+                        for (int i = 1; i < num+1; i++) {
+                            array1[i-1] = i;
+                            String before = s1 + s2 + s3 + array1[i-1];
+
+                            String after = encrypt(Editable.Factory.getInstance().newEditable(before), inputPassword);
+                            array2[i-1] = after;
+                        }
+
+                        //result = encrypt(Editable.Factory.getInstance().newEditable(result), inputPassword);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                     Intent Intent = new Intent(getApplicationContext(), MakeQR.class);
 
-                    Intent.putExtra("result", result);
-                    Intent.putExtra("result_original", result_original);
+                    Intent.putExtra("num", s4);
+                    Intent.putExtra("result", array2);
+                    //Intent.putExtra("result", result);
+                    Intent.putExtra("result_original",result_original);
                     startActivityForResult(Intent, 100);
                     finish();
                 }

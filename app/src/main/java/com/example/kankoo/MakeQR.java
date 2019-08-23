@@ -1,24 +1,31 @@
 package com.example.kankoo;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 import java.io.File;
 import java.io.FileOutputStream;
-
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class MakeQR extends AppCompatActivity {
@@ -31,26 +38,46 @@ public class MakeQR extends AppCompatActivity {
         setContentView(R.layout.activity_make_qr);
 
         final Intent Intent = getIntent();
-        final String result = Intent.getStringExtra("result");
+        String[] after = Intent.getStringArrayExtra("result");
+        //final String result = Intent.getStringExtra("result");
         final String result_original = Intent.getStringExtra("result_original");
+        String num = Intent.getStringExtra("num");
+        int num2 = Integer.parseInt(num);
+
         imageView = findViewById(R.id.imageView);
         Button saveimage = findViewById(R.id.saveimage);
 
+
         //String text = etInput.getText().toString().trim();
-        String text = result;
+        //String text = result;
+
+        TextView textView1 = (TextView) findViewById(R.id.text1) ;
+
+        for (int i = 1; i < num2 + 1; i++) {
+            textView1.setText(Arrays.toString(after));
 
 
-        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
-        try {
-            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 500, 500);
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            imageView.setImageBitmap(bitmap);
-
-        } catch (WriterException e) {
-            e.printStackTrace();
         }
+
+
+
+
+        for (int i = 1; i < num2 + 1; i++) {
+            String text = after[i - 1];
+
+            MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
+            try {
+                BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 500, 500);
+                BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                imageView.setImageBitmap(bitmap);
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         //Save button
         saveimage.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +98,6 @@ public class MakeQR extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private Bitmap getBitmapFromView(View view) {
@@ -91,3 +117,4 @@ public class MakeQR extends AppCompatActivity {
     }
 
 }
+
