@@ -60,9 +60,6 @@ public class MakeQR extends AppCompatActivity {
 
         }
 
-
-
-
         for (int i = 1; i < num2 + 1; i++) {
             String text = after[i - 1];
 

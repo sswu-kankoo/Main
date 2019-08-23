@@ -6,40 +6,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class mainpage2 extends MainActivity{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class mainpage2 extends AppCompatActivity {
+
+    Intent intent = new Intent();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_owner);
-        Toast.makeText(getApplicationContext(), "QR코드 스캔", Toast.LENGTH_SHORT).show();
-
-        Button qrscan = (Button) findViewById(R.id.btnReadQR);
-        qrscan.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRscanActivity.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_mainpage2);
     }
 
-    /*
-    public void QRscan_onClick(View v){
-        intent.putExtra("result", "QR코드 스캔");
-        setResult(RESULT_OK, intent);
+    public void ReadQR_onClick(View v){
+        Intent Intent = new Intent(getApplicationContext(), QRscanActivity.class);
+        startActivityForResult(Intent, 100);
         finish();
     }
 
-
-    public void Maechul_onClick(View v){
-        intent.putExtra("result", "거래 목록");
-        setResult(RESULT_OK, intent);
+    public void ManageQR_onClick(View v) {
+        Intent Intent = new Intent(getApplicationContext(), ManageQR.class);
+        startActivityForResult(Intent, 100);
         finish();
     }
-
-    */
-
-
 }
